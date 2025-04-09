@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "username": "admin_hidoc",
+        "email": "admin@hidoc.com",
+        "password": "admin123",
+        "role": "Admin"
+    },
+    {
+        "id": 2,
+        "username": "dr_andi",
+        "email": "dr.andi@hidoc.com",
+        "password": "dokter123",
+        "role": "Doctor"
+    },
+    {
+        "id": 3,
+        "username": "dr_maya",
+        "email": "dr.maya@hidoc.com",
+        "password": "doktermaya",
+        "role": "Doctor"
+    },
+    {
+        "id": 4,
+        "username": "deni123",
+        "email": "deni@mail.com",
+        "password": "pasiendeni",
+        "role": "Patient"
+    },
+    {
+        "id": 5,
+        "username": "rosa_k",
+        "email": "rosa@mail.com",
+        "password": "passwordku",
+        "role": "Patient"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Admin HiDoc",
+        "age": 35,
+        "UserId": 1
+    },
+    {
+        "id": 2,
+        "name": "dr. Andi Wijaya",
+        "age": 45,
+        "UserId": 2
+    },
+    {
+        "id": 3,
+        "name": "dr. Maya Sari",
+        "age": 42,
+        "UserId": 3
+    },
+    {
+        "id": 4,
+        "name": "Deni Putra",
+        "age": 30,
+        "UserId": 4
+    },
+    {
+        "id": 5,
+        "name": "Rosa Kumala",
+        "age": 28,
+        "UserId": 5
+    }
+]
