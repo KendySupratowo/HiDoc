@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "DiseaseId": 1,
+        "SymptomId": 1
+    },
+    {
+        "id": 2,
+        "DiseaseId": 1,
+        "SymptomId": 4
+    },
+    {
+        "id": 3,
+        "DiseaseId": 1,
+        "SymptomId": 8
+    },
+    {
+        "id": 4,
+        "DiseaseId": 2,
+        "SymptomId": 5
+    },
+    {
+        "id": 5,
+        "DiseaseId": 2,
+        "SymptomId": 7
+    },
+    {
+        "id": 6,
+        "DiseaseId": 3,
+        "SymptomId": 2
+    },
+    {
+        "id": 7,
+        "DiseaseId": 3,
+        "SymptomId": 3
+    },
+    {
+        "id": 8,
+        "DiseaseId": 4,
+        "SymptomId": 1
+    },
+    {
+        "id": 9,
+        "DiseaseId": 4,
+        "SymptomId": 2
+    },
+    {
+        "id": 10,
+        "DiseaseId": 4,
+        "SymptomId": 3
+    },
+    {
+        "id": 11,
+        "DiseaseId": 5,
+        "SymptomId": 7
+    },
+    {
+        "id": 12,
+        "DiseaseId": 5,
+        "SymptomId": 8
+    }
+]

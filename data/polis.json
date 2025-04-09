@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "doctorName": "dr. Andi Wijaya",
+        "poliName": "Poli Umum"
+    },
+    {
+        "id": 2,
+        "doctorName": "dr. Rina Kurnia",
+        "poliName": "Poli Anak"
+    },
+    {
+        "id": 3,
+        "doctorName": "drg. Budi Santoso",
+        "poliName": "Poli Gigi"
+    },
+    {
+        "id": 4,
+        "doctorName": "dr. Maya Sari",
+        "poliName": "Poli Kandungan"
+    },
+    {
+        "id": 5,
+        "doctorName": "dr. Aldi Putra",
+        "poliName": "Poli Kulit"
+    },
+    {
+        "id": 6,
+        "doctorName": "dr. Aza Risma",
+        "poliName": "Poli Penyakit Dalam"
+    },
+    {
+        "id": 7,
+        "doctorName": "dr. Bagus Pratama",
+        "poliName": "Poli Paru"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "symptomName": "Demam"
+    },
+    {
+        "id": 2,
+        "symptomName": "Batuk"
+    },
+    {
+        "id": 3,
+        "symptomName": "Sesak Napas"
+    },
+    {
+        "id": 4,
+        "symptomName": "Nyeri Otot"
+    },
+    {
+        "id": 5,
+        "symptomName": "Mual"
+    },
+    {
+        "id": 6,
+        "symptomName": "Ruam Kulit"
+    },
+    {
+        "id": 7,
+        "symptomName": "Pusing"
+    },
+    {
+        "id": 8,
+        "symptomName": "Lemas"
+    },
+    {
+        "id": 9,
+        "symptomName": "Diare"
+    },
+    {
+        "id": 10,
+        "symptomName": "Sakit Kepala"
+    }
+]
