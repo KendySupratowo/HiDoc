@@ -17,21 +17,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    username: DataTypes.STRING,
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
-        notNull: {
-          msg: 'Email required!'
-        },
-        notEmpty: {
-          msg: 'Email required!'
+        notNull: { msg: "Username required!" },
+        notEmpty: { msg: "Username required!" },
+        len: {
+          args: [5],
+          msg: "Username at least 5 characters long!"
         }
       }
     },
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: { msg: "Email already in use!" },
+      validate: {
+        notNull: { msg: "Email required!" },
+        notEmpty: { msg: "Email required!" }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Password required!" },
+        notEmpty: { msg: "Password required!" },
+        len: {
+          args: [5],
+          msg: "Password at least 5 characters long!"
+        }
+      }
+    },
     role: DataTypes.STRING
   }, {
     hooks: {
@@ -39,6 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         const salt = bcrypt.genSaltSync(8)
         const hash = bcrypt.hashSync(user.password, salt)
         user.password = hash
+        user.role = 'Patient'
       }
     },
     sequelize,

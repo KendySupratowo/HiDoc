@@ -13,12 +13,11 @@
     <nav class="bg-green-200 p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/home">
-                <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
-                <a href="/layanan" class="text-green-700 hover:text-green-900">Layanan</a>
+                <h1 class="text-2xl font-bold text-green-700 hover:text-green-900 font-bold">HiDoc</h1>
             </a>
-            <div class="space-x-4">
-                <span class="text-green-800 font-semibold">Halo, <%= user.username %>!</span>
-                <a href="/profile" class="text-green-700 hover:text-green-900">Profile</a>
+            <div class=" space-x-4">
+                <a href="/profile" class="text-green-800 font-semibold hover:text-green-900 font-bold">Halo, <%=
+                        user.username %>!</a>
                 <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
             </div>
         </div>
@@ -106,7 +105,7 @@
         <div class="container mx-auto text-center">
             <h3 class="text-3xl font-bold text-green-800 mb-8">Layanan Kami</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-                <a href="/checkup" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                <a href="/diagnose" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
                     <h4 class="text-xl font-semibold text-green-700 mb-2">Cek Gejala Penyakit</h4>
                     <p class="text-gray-600">Masukkan gejala yang kamu rasakan dan dapatkan info kemungkinan
                         penyakitnya.</p>
