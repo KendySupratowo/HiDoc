@@ -12,54 +12,117 @@
     <!-- Navbar -->
     <nav class="bg-green-200 p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
+            <a href="/home">
+                <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
+                <a href="/layanan" class="text-green-700 hover:text-green-900">Layanan</a>
+            </a>
             <div class="space-x-4">
-                <a href="/polis" class="text-green-700 hover:text-green-900">Layanan</a>
-                <a href="#" class="text-green-700 hover:text-green-900">Dokter</a>
-                <a href="#" class="text-green-700 hover:text-green-900 font-bold">Login/SignUp</a>
+                <span class="text-green-800 font-semibold">Halo, <%= user.username %>!</span>
+                <a href="/profile" class="text-green-700 hover:text-green-900">Profile</a>
+                <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
             </div>
         </div>
+
     </nav>
 
-    <!-- Hero Section -->
-    <section class="bg-green-100 py-12">
-        <div class="container mx-auto flex items-center">
-            <div class="w-1/2">
-                <h2 class="text-4xl font-bold text-green-800 mb-4">Hidup Sehat Mulai dari Sekarang</h2>
-                <p class="text-green-600 mb-6">Cek kesehatan mandiri, pesan obat, dan informasi kesehatan terpercaya.
-                </p>
-                <!-- <button class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">Mulai Sekarang</button> -->
-            </div>
-            <div class="w-1/2 relative">
-                <img src="https://blog-edutore-partner.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/03/01110106/Jurusan-Kesehatan-Masyarakat-01-626x430-1.png"
-                    alt="Ilustrasi Kesehatan" class="rounded-lg object-cover w-[70%] h-auto mix-blend-multiply">
-                <!-- Optional: Overlay untuk efek menyatu -->
-                <div class="absolute inset-0 bg-green-100 opacity-20 rounded-lg"></div>
+    <!-- Tabel Level Bahaya Penyakit -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto">
+            <h3 class="text-3xl font-bold text-green-800 mb-6 text-center">Kenali Level Bahaya Penyakit</h3>
+            <div class="overflow-hidden shadow-lg rounded-lg max-w-4xl mx-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th class="bg-green-600 text-white px-6 py-4 text-left text-lg font-semibold">Level</th>
+                            <th class="bg-green-600 text-white px-6 py-4 text-left text-lg font-semibold">Kategori</th>
+                            <th class="bg-green-600 text-white px-6 py-4 text-left text-lg font-semibold">Penjelasan
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200 hover:bg-green-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div
+                                        class="bg-green-200 h-8 w-8 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-green-800 font-bold">1</span>
+                                    </div>
+                                    <span class="font-medium">Rendah</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-green-600 font-medium">Ringan</td>
+                            <td class="px-6 py-4">Penyakit yang umumnya dapat sembuh dengan istirahat dan pengobatan
+                                sederhana.</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-green-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div
+                                        class="bg-yellow-200 h-8 w-8 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-yellow-800 font-bold">2</span>
+                                    </div>
+                                    <span class="font-medium">Sedang</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-yellow-600 font-medium">Perlu Perhatian</td>
+                            <td class="px-6 py-4">Penyakit yang memerlukan pengobatan dan perhatian khusus tapi tidak
+                                mengancam jiwa.</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-green-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div
+                                        class="bg-orange-200 h-8 w-8 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-orange-800 font-bold">3</span>
+                                    </div>
+                                    <span class="font-medium">Bahaya</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-orange-600 font-medium">Serius</td>
+                            <td class="px-6 py-4">Penyakit yang memerlukan penanganan medis segera dan dapat berpotensi
+                                mengancam jiwa.</td>
+                        </tr>
+                        <tr class="hover:bg-green-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="bg-red-200 h-8 w-8 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-red-800 font-bold">4</span>
+                                    </div>
+                                    <span class="font-medium">Sangat Berbahaya</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-red-600 font-medium">Kritis</td>
+                            <td class="px-6 py-4">Penyakit yang mengancam jiwa dan membutuhkan tindakan medis darurat
+                                segera.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <!-- Fitur Section -->
+    <!-- Layanan Kami -->
     <section class="py-12">
         <div class="container mx-auto text-center">
             <h3 class="text-3xl font-bold text-green-800 mb-8">Layanan Kami</h3>
-            <div class="grid grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Cek Kesehatan Mandiri</h4>
-                    <p class="text-gray-600">Cek mandiri keluhan kesehatan yang dialami</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Pesan Obat</h4>
-                    <p class="text-gray-600">Obat dikirim langsung ke rumah.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-semibold text-green-700 mb-2">Artikel Kesehatan</h4>
-                    <p class="text-gray-600">Info kesehatan terbaru.</p>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+                <a href="/checkup" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Cek Gejala Penyakit</h4>
+                    <p class="text-gray-600">Masukkan gejala yang kamu rasakan dan dapatkan info kemungkinan
+                        penyakitnya.</p>
+                </a>
+                <a href="/consultation" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Konsultasi dengan Dokter</h4>
+                    <p class="text-gray-600">Bertanya langsung kepada dokter profesional dari berbagai poli yang
+                        tersedia.</p>
+                </a>
+                <a href="/diseaseSymptom" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Daftar Gejala & Penyakit</h4>
+                    <p class="text-gray-600">Ketahui gejala penyakit dan informasi terpercaya lainnya.</p>
+                </a>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="bg-green-200 py-6">
         <div class="container mx-auto text-center">

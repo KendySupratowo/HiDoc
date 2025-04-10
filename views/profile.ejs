@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - HiDoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-green-200 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/home">
+                <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
+            </a>
+            <div>
+                <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">Profil Saya</h2>
+
+                <div class="space-y-4">
+                    <p><span class="font-semibold text-gray-700">Username:</span>
+                        <%= user.username %>
+                    </p>
+                    <p><span class="font-semibold text-gray-700">Nama:</span>
+                        <%= user.Profile.name %>
+                    </p>
+                    <p><span class="font-semibold text-gray-700">Usia:</span>
+                        <%= user.Profile.age %> tahun
+                    </p>
+                </div>
+
+                <!-- Optional: Tambahkan tombol Edit -->
+                <div class="mt-8 text-center">
+                    <a href="/profile/edit" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">
+                        Edit Profil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-200 py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-green-700">© 2025 HiDoc. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

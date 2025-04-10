@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiDoc - Website Kesehatan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-green-200 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/">
+                <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
+            </a>
+            <div>
+                <a href="/login" class="text-green-700 hover:text-green-900 font-bold mr-4">Login</a>
+                <a href="/register" class="text-green-700 hover:text-green-900 font-bold">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-green-100 py-12">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-4xl font-bold text-green-800 mb-4">Hidup Sehat Mulai dari Sekarang</h2>
+                <p class="text-green-600 mb-6">Cek gejala kesehatanmu, konsultasi dengan dokter, dan ketahui lebih
+                    banyak tentang penyakit yang mungkin kamu alami.</p>
+                <a href="/register" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">Mulai
+                    Sekarang</a>
+            </div>
+            <div class="md:w-1/2 relative mt-8 md:mt-0">
+                <img src="https://blog-edutore-partner.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/03/01110106/Jurusan-Kesehatan-Masyarakat-01-626x430-1.png"
+                    alt="Ilustrasi Kesehatan" class="rounded-lg object-cover w-[70%] mx-auto mix-blend-multiply">
+                <div class="absolute inset-0 bg-green-100 opacity-20 rounded-lg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Kami -->
+    <section class="py-12">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold text-green-800 mb-8">Layanan Kami</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+                <a href="/checkup" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Cek Gejala Penyakit</h4>
+                    <p class="text-gray-600">Masukkan gejala yang kamu rasakan dan dapatkan info kemungkinan
+                        penyakitnya.</p>
+                </a>
+                <a href="/consultation" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Konsultasi dengan Dokter</h4>
+                    <p class="text-gray-600">Bertanya langsung kepada dokter profesional dari berbagai poli yang
+                        tersedia.</p>
+                </a>
+                <a href="/diseaseSymptom" class="bg-white p-6 rounded-lg shadow-md hover:bg-green-50 transition">
+                    <h4 class="text-xl font-semibold text-green-700 mb-2">Daftar Gejala & Penyakit</h4>
+                    <p class="text-gray-600">Ketahui gejala penyakit dan informasi terpercaya lainnya.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-200 py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-green-700">© 2025 HiDoc. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
