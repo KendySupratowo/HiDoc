@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Symptom.belongsToMany(models.Disease, { foreignKey: 'SymptomId', through: models.DiseaseSymptom })
+      Symptom.belongsToMany(models.User, { foreignKey: 'SymptomId', through: models.UserSymptom })
+      Symptom.belongsToMany(models.Checkup, { foreignKey: 'SymptomId', through: models.CheckupSymptom })
     }
   }
   Symptom.init({

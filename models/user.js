@@ -12,12 +12,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasOne(models.Profile, { foreignKey: 'UserId' })
-      User.belongsToMany(models.Disease, { foreignKey: 'UserId', through: models.UserDisease })
+      User.belongsToMany(models.Symptom, { foreignKey: 'UserId', through: models.UserSymptom })
+      User.hasMany(models.Checkup, { foreignKey: 'UserId' })
     }
   }
   User.init({
     username: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notNull: {
+          msg: 'Email required!'
+        },
+        notEmpty: {
+          msg: 'Email required!'
+        }
+      }
+    },
     password: DataTypes.STRING,
     role: DataTypes.STRING
   }, {

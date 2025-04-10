@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "medicineName": "Paracetamol",
+        "price": 15000,
+        "DiseaseId": 1
+    },
+    {
+        "id": 2,
+        "medicineName": "Insulin",
+        "price": 120000,
+        "DiseaseId": 2
+    },
+    {
+        "id": 3,
+        "medicineName": "Salbutamol Inhaler",
+        "price": 35000,
+        "DiseaseId": 3
+    },
+    {
+        "id": 4,
+        "medicineName": "Favipiravir",
+        "price": 200000,
+        "DiseaseId": 4
+    },
+    {
+        "id": 5,
+        "medicineName": "Amlodipine",
+        "price": 25000,
+        "DiseaseId": 5
+    },
+    {
+        "id": 6,
+        "medicineName": "Ambroxol Sirup",
+        "price": 18000,
+        "DiseaseId": 6
+    },
+    {
+        "id": 7,
+        "medicineName": "Chlorhexidine Mouthwash",
+        "price": 22000,
+        "DiseaseId": 7
+    },
+    {
+        "id": 8,
+        "medicineName": "Dienogest",
+        "price": 95000,
+        "DiseaseId": 8
+    },
+    {
+        "id": 9,
+        "medicineName": "Antasida",
+        "price": 12000,
+        "DiseaseId": 9
+    },
+    {
+        "id": 10,
+        "medicineName": "Hydrocortisone Cream",
+        "price": 30000,
+        "DiseaseId": 10
+    },
+    {
+        "id": 11,
+        "medicineName": "Labetalol",
+        "price": 70000,
+        "DiseaseId": 11
+    },
+    {
+        "id": 12,
+        "medicineName": "Imunoglobulin",
+        "price": 45000,
+        "DiseaseId": 1
+    },
+    {
+        "id": 13,
+        "medicineName": "Hydroxychloroquine",
+        "price": 32000,
+        "DiseaseId": 4
+    },
+    {
+        "id": 14,
+        "medicineName": "Metformin",
+        "price": 15000,
+        "DiseaseId": 2
+    },
+    {
+        "id": 15,
+        "medicineName": "Ventolin Inhaler",
+        "price": 48000,
+        "DiseaseId": 3
+    },
+    {
+        "id": 16,
+        "medicineName": "Losartan",
+        "price": 16000,
+        "DiseaseId": 5
+    },
+    {
+        "id": 17,
+        "medicineName": "Paracetamol Anak",
+        "price": 7000,
+        "DiseaseId": 6
+    },
+    {
+        "id": 18,
+        "medicineName": "Obat Kumur Antiseptik",
+        "price": 12000,
+        "DiseaseId": 7
+    },
+    {
+        "id": 19,
+        "medicineName": "Pil KB",
+        "price": 18000,
+        "DiseaseId": 8
+    },
+    {
+        "id": 20,
+        "medicineName": "Antasida",
+        "price": 9000,
+        "DiseaseId": 9
+    },
+    {
+        "id": 21,
+        "medicineName": "Salep Kortikosteroid",
+        "price": 14000,
+        "DiseaseId": 10
+    },
+    {
+        "id": 22,
+        "medicineName": "Magnesium Sulfat",
+        "price": 25000,
+        "DiseaseId": 11
+    }
+]
