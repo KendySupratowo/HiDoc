@@ -3,42 +3,110 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Penyakit dan Gejalanya</title>
+    <title>Daftar Penyakit dan Gejalanya - HiDoc</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-100 font-sans">
 
-    <div class="container mx-auto py-12">
-        <h1 class="text-3xl font-bold text-green-700 mb-8 text-center">Daftar Penyakit & Gejala</h1>
+    <!-- Navbar -->
+    <nav class="bg-green-200 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/home">
+                <h1 class="text-2xl font-bold text-green-700 hover:text-green-900">HiDoc</h1>
+            </a>
+            <div class="space-x-4">
+                <a href="/profile" class="text-green-800 font-semibold hover:text-green-900">Profil</a>
+                <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
+            </div>
+        </div>
+    </nav>
 
-        <table class="min-w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
-            <thead class="bg-green-200">
-                <tr>
-                    <th class="text-left px-6 py-3 border">Nama Penyakit</th>
-                    <th class="text-left px-6 py-3 border">Gejala Terkait</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% diseases.forEach(disease=> { %>
-                    <tr class="border-t">
-                        <td class="px-6 py-4 text-green-800 font-medium">
-                            <%= disease.diseaseName %>
-                        </td>
-                        <td class="px-6 py-4">
-                            <ul class="list-disc pl-5 text-gray-700">
-                                <% disease.Symptoms.forEach(symptom=> { %>
-                                    <li>
-                                        <%= symptom.symptomName %>
-                                    </li>
-                                    <% }) %>
-                            </ul>
-                        </td>
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
-    </div>
+    <!-- Main Content -->
+    <section class="py-12">
+        <div class="container mx-auto">
+
+            <h1 class="text-3xl font-bold text-green-700 mb-8 text-center">Daftar Penyakit Terbanyak & Gejalanya</h1>
+
+            <!-- Filter/Search Form -->
+            <form method="GET" action="/diseaseSymptom" class="flex flex-wrap gap-4 justify-center mb-8">
+                <input type="text" name="search" placeholder="Cari nama penyakit..." value="<%= search || '' %>"
+                    class="px-4 py-2 border rounded-md shadow-sm w-64">
+
+                <select name="sort" class="px-4 py-2 border rounded-md shadow-sm">
+                    <option value="">Urutkan Level</option>
+                    <option value="asc" <%=sort==='asc' ? 'selected' : '' %>>Level Rendah ke Tinggi</option>
+                    <option value="desc" <%=sort==='desc' ? 'selected' : '' %>>Level Tinggi ke Rendah</option>
+                </select>
+
+                <button type="submit"
+                    class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md">Terapkan</button>
+            </form>
+
+            <!-- Filter by Poli -->
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <% const poliList=['Poli Umum', 'Poli Anak' , 'Poli Gigi' , 'Poli Kandungan' , 'Poli Kulit'
+                    , 'Poli Penyakit Dalam' , 'Poli Paru' ]; %>
+                    <% poliList.forEach(p=> { %>
+                        <a href="/diseaseSymptom?search=<%= search || '' %>&sort=<%= sort || '' %>&poli=<%= p %>"
+                            class="px-4 py-2 rounded-md font-medium border <%= poli === p ? 'bg-green-600 text-white' : 'bg-white text-green-700 hover:bg-green-100' %>">
+                            <%= p %>
+                        </a>
+                        <% }) %>
+            </div>
+
+            <!-- Tabel -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
+                    <thead class="bg-green-200">
+                        <tr>
+                            <th class="text-left px-6 py-3 border font-semibold text-green-800">Nama Penyakit</th>
+                            <th class="text-left px-6 py-3 border font-semibold text-green-800">Deskripsi</th>
+                            <th class="text-left px-6 py-3 border font-semibold text-green-800">Level</th>
+                            <th class="text-left px-6 py-3 border font-semibold text-green-800">Gejala Terkait</th>
+                            <th class="text-left px-6 py-3 border font-semibold text-green-800">Poli</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% diseases.forEach(disease=> {
+                            const matchPoli = poli ? (disease.Poli && disease.Poli.poliName === poli) : true;
+                            if (matchPoli) { %>
+                            <tr class="border-t hover:bg-green-50 transition-colors">
+                                <td class="px-6 py-4 text-green-800 font-medium">
+                                    <%= disease.diseaseName %>
+                                </td>
+                                <td class="px-6 py-4 text-green-800">
+                                    <%= disease.description %>
+                                </td>
+                                <td class="px-6 py-4 text-green-800">
+                                    <%= disease.level %>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <% disease.Symptoms.forEach(symptom=> { %>
+                                            <li>
+                                                <%= symptom.symptomName %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                </td>
+                                <td class="px-6 py-4 text-green-800">
+                                    <%= disease.Poli?.poliName || '-' %>
+                                </td>
+                            </tr>
+                            <% } }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-200 py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-green-700">© 2025 HiDoc. Semua hak dilindungi.</p>
+        </div>
+    </footer>
 
 </body>
 

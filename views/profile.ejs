@@ -14,9 +14,12 @@
     <nav class="bg-green-200 p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/home">
-                <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
+                <h1 class="text-2xl font-bold text-green-700 hover:text-green-900 font-bold">HiDoc</h1>
             </a>
-            <div>
+            <div class=" space-x-4">
+                <a href="/profile" class="text-green-800 font-semibold hover:text-green-900 font-bold">Halo, <%=
+                        user.username %>!</a>
+                <a href="/diagnose/history" class="text-green-700 hover:text-green-900 font-bold">Riwayat</a>
                 <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
             </div>
         </div>
@@ -33,10 +36,13 @@
                         <%= user.username %>
                     </p>
                     <p><span class="font-semibold text-gray-700">Nama:</span>
-                        <%= user.Profile.name %>
+                        <%= user.Profile.formattedName %>
                     </p>
                     <p><span class="font-semibold text-gray-700">Usia:</span>
-                        <%= user.Profile.age %> tahun
+                        <%= user.Profile.formatAge() %>
+                    </p>
+                    <p><span class="font-semibold text-gray-700">Jenis Kelamin:</span>
+                        <%= user.Profile.gender %>
                     </p>
                 </div>
 

@@ -14,7 +14,6 @@
         <div class="container mx-auto flex justify-between items-center">
             <a href="/home">
                 <h1 class="text-2xl font-bold text-green-700">HiDoc</h1>
-                <a href="/layanan" class="text-green-700 hover:text-green-900">Layanan</a>
             </a>
             <div class="space-x-4">
                 <span class="text-green-800 font-semibold">Halo, <%= user.username %>!</span>
@@ -50,9 +49,11 @@
                                                 d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                        <p class="text-gray-600 font-medium">
-                                            <%= el.doctorName %>
-                                        </p>
+                                        <a href="/consultation/<%= el.id %>">
+                                            <p class="text-gray-600 font-medium">
+                                                <%= el.doctorName %>
+                                            </p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

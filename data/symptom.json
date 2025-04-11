@@ -38,5 +38,85 @@
     {
         "id": 10,
         "symptomName": "Sakit Kepala"
+    },
+    {
+        "id": 11,
+        "symptomName": "Nafas pendek"
+    },
+    {
+        "id": 12,
+        "symptomName": "Sakit perut"
+    },
+    {
+        "id": 13,
+        "symptomName": "Gatal-gatal"
+    },
+    {
+        "id": 14,
+        "symptomName": "Tekanan darah tinggi"
+    },
+    {
+        "id": 15,
+        "symptomName": "Frekuensi buang air kecil meningkat"
+    },
+    {
+        "id": 16,
+        "symptomName": "Pandangan kabur"
+    },
+    {
+        "id": 17,
+        "symptomName": "Pembengkakan kaki"
+    },
+    {
+        "id": 18,
+        "symptomName": "Sulit tidur"
+    },
+    {
+        "id": 19,
+        "symptomName": "Kulit kering"
+    },
+    {
+        "id": 20,
+        "symptomName": "Berat badan menurun"
+    },
+    {
+        "id": 21,
+        "symptomName": "Nyeri dada"
+    },
+    {
+        "id": 22,
+        "symptomName": "Keringat dingin"
+    },
+    {
+        "id": 23,
+        "symptomName": "Sakit tenggorokan"
+    },
+    {
+        "id": 24,
+        "symptomName": "Nafsu makan menurun"
+    },
+    {
+        "id": 25,
+        "symptomName": "Kulit bersisik"
+    },
+    {
+        "id": 26,
+        "symptomName": "Perut kembung"
+    },
+    {
+        "id": 27,
+        "symptomName": "Menstruasi tidak teratur"
+    },
+    {
+        "id": 28,
+        "symptomName": "Nyeri saat buang air kecil"
+    },
+    {
+        "id": 29,
+        "symptomName": "Bercak darah di hidung"
+    },
+    {
+        "id": 30,
+        "symptomName": "Gusi berdarah"
     }
 ]

@@ -33,5 +33,47 @@
         "description": "Kondisi tekanan darah tinggi yang dapat memicu penyakit lain.",
         "level": 1,
         "PoliId": 6
+    },
+    {
+        "id": 6,
+        "name": "Infeksi Saluran Pernapasan Akut (ISPA) Anak",
+        "description": "Penyakit umum pada anak yang menyerang saluran pernapasan atas atau bawah.",
+        "level": 2,
+        "PoliId": 2
+    },
+    {
+        "id": 7,
+        "name": "Karies Gigi",
+        "description": "Kerusakan jaringan gigi akibat aktivitas bakteri pada permukaan gigi.",
+        "level": 1,
+        "PoliId": 3
+    },
+    {
+        "id": 8,
+        "name": "Endometriosis",
+        "description": "Kondisi di mana jaringan yang mirip dengan lapisan rahim tumbuh di luar rahim.",
+        "level": 3,
+        "PoliId": 4
+    },
+    {
+        "id": 9,
+        "name": "Gastritis",
+        "description": "Peradangan pada lapisan lambung yang menyebabkan nyeri ulu hati dan mual.",
+        "level": 2,
+        "PoliId": 1
+    },
+    {
+        "id": 10,
+        "name": "Eksim (Dermatitis Atopik)",
+        "description": "Penyakit kulit kronis yang menyebabkan gatal, kemerahan, dan peradangan.",
+        "level": 2,
+        "PoliId": 5
+    },
+    {
+        "id": 11,
+        "name": "Preeklampsia",
+        "description": "Komplikasi kehamilan yang ditandai dengan tekanan darah tinggi dan kerusakan organ.",
+        "level": 4,
+        "PoliId": 4
     }
 ]
