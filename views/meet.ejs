@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Konsultasi - HiDoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-green-200 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/home">
+                <h1 class="text-2xl font-bold text-green-700 hover:text-green-900">HiDoc</h1>
+            </a>
+            <div class="space-x-4">
+                <a href="/profile" class="text-green-800 font-semibold hover:text-green-900">Profil</a>
+                <a href="/logout" class="text-green-700 hover:text-green-900 font-bold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="py-12">
+        <div class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
+
+            <h2 class="text-3xl font-bold text-green-700 text-center mb-6">Hasil Konsultasi dengan Dokter</h2>
+
+            <div class="space-y-4 text-gray-800">
+                <p><span class="font-semibold">Nama Poli:</span>
+                    <%= poli.poliName %>
+                </p>
+                <p><span class="font-semibold">Dokter Bertugas:</span>
+                    <%= poli.doctorName %>
+                </p>
+                <p><span class="font-semibold">Catatan Konsultasi:</span></p>
+                <div class="bg-gray-100 p-4 rounded-md text-justify">
+                    <% if (poli.poliName==='Poli Umum' ) { %>
+                        Pasien disarankan untuk istirahat yang cukup, konsumsi air putih minimal 2 liter per hari, dan
+                        rutin mengonsumsi obat yang telah diresepkan. Jika gejala berlanjut lebih dari 3 hari, lakukan
+                        pemeriksaan lanjutan.
+                        <% } else if (poli.poliName==='Poli Anak' ) { %>
+                            Anak memerlukan asupan nutrisi seimbang dan imunisasi teratur. Perhatikan jadwal kontrol dan
+                            tumbuh kembang.
+                            <% } else if (poli.poliName==='Poli Gigi' ) { %>
+                                Pembersihan karang gigi dilakukan, disarankan kontrol setiap 6 bulan sekali dan hindari
+                                makanan manis berlebih.
+                                <% } else if (poli.poliName==='Poli Kulit' ) { %>
+                                    Hindari penggunaan produk beralkohol, gunakan krim topikal sesuai resep, dan kontrol
+                                    1 minggu lagi.
+                                    <% } else if (poli.poliName==='Poli Kandungan' ) { %>
+                                        Lakukan USG rutin setiap bulan, konsumsi suplemen yang direkomendasikan dan
+                                        hindari aktivitas berat.
+                                        <% } else if (poli.poliName==='Poli Penyakit Dalam' ) { %>
+                                            Perlu pemeriksaan lanjutan seperti darah lengkap dan tekanan darah rutin.
+                                            Jaga pola makan dan olahraga ringan.
+                                            <% } else if (poli.poliName==='Poli Paru' ) { %>
+                                                Perlu pemeriksaan rontgen paru, hindari rokok dan lingkungan berpolusi.
+                                                Gunakan masker jika perlu.
+                                                <% } else { %>
+                                                    Data poli tidak ditemukan.
+                                                    <% } %>
+                </div>
+
+                <p><span class="font-semibold">Tanggal Konsultasi:</span>
+                    <%= new Date().toLocaleDateString('id-ID') %>
+                </p>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="/home" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md">
+                    Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-200 py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-green-700">© 2025 HiDoc. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

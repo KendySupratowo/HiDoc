@@ -135,10 +135,7 @@ class Controller {
         try {
             const userId = req.session.userId; // pastikan user login
             const profile = await Profile.findOne({ where: { UserId: userId } });
-
-            if (!profile) return res.redirect('/profile'); // fallback jika profile belum ada
-
-            res.render('editProfile', { profile });
+            res.render('editProfile', { profile, user: req.session });
         } catch (err) {
             res.send(err);
         }
@@ -148,13 +145,13 @@ class Controller {
     // Simpan profil ke DB
     static async postEditProfile(req, res) {
         try {
-            const { fullName, age, gender } = req.body;
+            const { name, age, gender } = req.body;
             const userId = req.session.userId;
 
             const profile = await Profile.findOne({ where: { UserId: userId } });
 
             if (profile) {
-                await profile.update({ fullName, age, gender });
+                await profile.update({ name, age, gender });
             }
 
             res.redirect('/profile');
@@ -165,7 +162,7 @@ class Controller {
             } else {
                 errorMessages.push("Terjadi kesalahan");
             }
-            res.render('addProfile', { errors: errorMessages });
+            res.render('editProfile', { errors: errorMessages });
         }
     }
 
@@ -313,6 +310,16 @@ class Controller {
         } catch (error) {
             console.error(error);
             res.send(error);
+        }
+    }
+
+    static async meet(req, res) {
+        try {
+            const { id } = req.params
+            let poli = await Poli.findByPk(id)
+            res.render('meet', { poli })
+        } catch (error) {
+            res.send(error)
         }
     }
 

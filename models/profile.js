@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     get formattedName() {
       if (this.gender === "Laki-laki") {
-        return `Bpk. ${this.name}`;
+        return `Sdra. ${this.name}`;
       } else {
-        return `Ibu ${this.name}`;
+        return `Sdri. ${this.name}`;
       }
     }
 
@@ -31,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: { msg: "Name required!" },
-        notEmpty: { msg: "Name required!" }
+        notEmpty: { msg: "Name required!" },
+        len: {
+          args: [3],
+          msg: "Name at least 3 characters long!"
+        }
       }
     },
     age: {
@@ -39,7 +43,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: { msg: "Age required!" },
-        notEmpty: { msg: "Age required!" }
+        notEmpty: { msg: "Age required!" },
+        min: {
+          args: 1,
+          msg: "Age at least 1 year old!"
+        }
       }
     }, gender: {
       type: DataTypes.STRING,
