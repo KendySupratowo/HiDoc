@@ -24,7 +24,7 @@
     <section class="py-12">
         <div class="container mx-auto max-w-xl bg-white p-8 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-green-700 mb-6 text-center">Pilih Gejala yang Anda Alami</h2>
-            <form action="/diagnose" method="POST" class="space-y-4">
+            <form action="/diagnose" method="POST" class="space-y-4" onsubmit="return validateForm()">
                 <% symptoms.forEach(symptom=> { %>
                     <div>
                         <label class="inline-flex items-center">
@@ -40,6 +40,17 @@
             </form>
         </div>
     </section>
+
+    <script>
+        function validateForm() {
+            const checkboxes = document.querySelectorAll('input[name="symptomIds"]:checked');
+            if (checkboxes.length === 0) {
+                alert('Harap pilih setidaknya satu gejala sebelum submit!');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>

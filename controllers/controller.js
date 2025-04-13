@@ -1,15 +1,17 @@
 const { formatRupiah } = require('../helpers/helper');
-const { User, Profile, Disease, Symptom, Poli, Checkup, Medicine, CheckupSymptom } = require('../models')
+const { User, Profile, Disease, Symptom, Poli, Checkup, Medicine, CheckupSymptom } = require('../models');
 const bcrypt = require('bcryptjs');
 const sendMail = require('../helpers/mailer');
+const { Op } = require('sequelize');
+
 class Controller {
     static landingPage(req, res) {
-        res.render('landingPage')
+        res.render('landingPage');
     }
 
     static getRegis(req, res) {
-        const { error } = req.query
-        res.render('register', { error })
+        const { error } = req.query;
+        res.render('register', { error });
     }
 
     static async postRegis(req, res) {
@@ -18,28 +20,28 @@ class Controller {
             let user = await User.create({
                 username,
                 email,
-                password
+                password,
             });
             await sendMail(
                 user.email,
-                "Selamat Datang di HiDoc!",
+                'Selamat Datang di HiDoc!',
                 `<h1>Halo ${user.username} 👋</h1>
                 <p>Terima kasih telah mendaftar di HiDoc. Semoga sehat selalu!</p>`
             );
-            res.redirect('/login?msg=Register berhasil! Silakan login.')
+            res.redirect('/login?msg=Register berhasil! Silakan login.');
         } catch (error) {
-            if (error.name === "SequelizeValidationError" || error.name === 'SequelizeUniqueConstraintError') {
-                let msg = error.errors.map(el => el.message)
-                res.redirect(`/register?error=${msg}`)
+            if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError') {
+                let msg = error.errors.map((el) => el.message);
+                res.redirect(`/register?error=${msg}`);
             } else {
-                res.send(error)
+                res.send(error);
             }
         }
     }
 
     static getLogin(req, res) {
-        const { error, msg } = req.query
-        res.render('login', { error, msg })
+        const { error, msg } = req.query;
+        res.render('login', { error, msg });
     }
 
     static async postLogin(req, res) {
@@ -48,41 +50,40 @@ class Controller {
             const user = await User.findOne({ where: { username } });
 
             if (user) {
-                const isValidPassword = bcrypt.compareSync(password, user.password)
+                const isValidPassword = bcrypt.compareSync(password, user.password);
 
                 if (isValidPassword) {
-                    req.session.userId = user.id
-                    req.session.username = user.username
-                    return res.redirect('/home')
+                    req.session.userId = user.id;
+                    req.session.username = user.username;
+                    return res.redirect('/home');
                 } else {
-                    const error = 'Invalid Username/Password!'
-                    return res.redirect(`/login?error=${error}`)
+                    const error = 'Invalid Username/Password!';
+                    return res.redirect(`/login?error=${error}`);
                 }
             } else {
-                const error = 'Invalid Username/Password!'
-                return res.redirect(`/login?error=${error}`)
+                const error = 'Invalid Username/Password!';
+                return res.redirect(`/login?error=${error}`);
             }
-            res.redirect('/login')
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     }
 
     static getLogout(req, res) {
-        req.session.destroy()
-        res.redirect('/login')
+        req.session.destroy();
+        res.redirect('/login');
     }
 
     static home(req, res) {
-        res.render('home', { user: req.session })
+        res.render('home', { user: req.session });
     }
 
     static async consultation(req, res) {
         try {
-            let data = await Poli.findAll()
-            res.render('consultation', { data, user: req.session })
+            let data = await Poli.findAll();
+            res.render('consultation', { data, user: req.session });
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     }
 
@@ -90,22 +91,19 @@ class Controller {
         try {
             const userId = req.session.userId;
             const user = await User.findByPk(userId, {
-                include: Profile
+                include: Profile,
             });
 
-            // Kalau belum punya profile, arahkan ke form tambah
             if (!user.Profile) {
                 return res.redirect('/profile/add');
             }
 
-            // Kalau sudah punya profile, tampilkan
             res.render('profile', { user });
         } catch (error) {
             res.send(error);
         }
     }
 
-    // Form tambah profil
     static getAddProfile(req, res) {
         res.render('addProfile', { errors: [] });
     }
@@ -117,15 +115,15 @@ class Controller {
                 name,
                 age,
                 gender,
-                UserId: req.session.userId
+                UserId: req.session.userId,
             });
             res.redirect('/profile');
         } catch (error) {
             let errorMessages = [];
             if (error.name === 'SequelizeValidationError') {
-                errorMessages = error.errors.map(e => e.message);
+                errorMessages = error.errors.map((e) => e.message);
             } else {
-                errorMessages.push("Terjadi kesalahan");
+                errorMessages.push('Terjadi kesalahan');
             }
             res.render('addProfile', { errors: errorMessages });
         }
@@ -133,7 +131,7 @@ class Controller {
 
     static async getEditProfile(req, res) {
         try {
-            const userId = req.session.userId; // pastikan user login
+            const userId = req.session.userId;
             const profile = await Profile.findOne({ where: { UserId: userId } });
             res.render('editProfile', { profile, user: req.session });
         } catch (err) {
@@ -141,8 +139,6 @@ class Controller {
         }
     }
 
-
-    // Simpan profil ke DB
     static async postEditProfile(req, res) {
         try {
             const { name, age, gender } = req.body;
@@ -158,9 +154,9 @@ class Controller {
         } catch (error) {
             let errorMessages = [];
             if (error.name === 'SequelizeValidationError') {
-                errorMessages = error.errors.map(e => e.message);
+                errorMessages = error.errors.map((e) => e.message);
             } else {
-                errorMessages.push("Terjadi kesalahan");
+                errorMessages.push('Terjadi kesalahan');
             }
             res.render('editProfile', { errors: errorMessages });
         }
@@ -173,30 +169,45 @@ class Controller {
             let queryOptions = {
                 include: [
                     { model: Symptom, through: { attributes: [] } },
-                    { model: Poli }
+                    {
+                        model: Poli,
+                        where: poli ? { poliName: poli } : {},
+                        required: poli ? true : false,
+                    },
                 ],
-                where: {}
+                where: {},
+                order: [],
             };
 
             if (search) {
                 queryOptions.where.diseaseName = {
-                    [Op.iLike]: `%${search}%`
+                    [Op.iLike]: `%${search.trim()}%`,
                 };
             }
 
-            if (sort) {
-                queryOptions.order = [['level', sort]];
+            if (sort === 'asc') {
+                queryOptions.order.push(['level', 'ASC']);
+            } else if (sort === 'desc') {
+                queryOptions.order.push(['level', 'DESC']);
             }
 
-            let diseases = await Disease.findAll(queryOptions);
+            const diseases = await Disease.findAll(queryOptions);
+
             res.render('diseaseSymptom', {
                 diseases,
-                search,
+                search: search || '',
                 sort,
-                poli
+                poli,
             });
         } catch (error) {
-            res.send(error);
+            console.error(error);
+            res.status(500).render('diseaseSymptom', {
+                diseases: [],
+                search: '',
+                sort: '',
+                poli: '',
+                error: 'Terjadi kesalahan saat memuat data.',
+            });
         }
     }
 
@@ -213,17 +224,16 @@ class Controller {
         try {
             const { symptomIds } = req.body;
             const userId = req.session.userId;
-            console.log("REQ.BODY =>", req.body);
-            if (!symptomIds) throw new Error("Pilih setidaknya satu gejala.");
+            if (!symptomIds) throw new Error('Pilih setidaknya satu gejala.');
 
             const symptoms = await Symptom.findAll({
                 where: { id: symptomIds },
-                include: Disease
+                include: Disease,
             });
 
             const diseaseCount = {};
-            symptoms.forEach(symptom => {
-                symptom.Diseases.forEach(disease => {
+            symptoms.forEach((symptom) => {
+                symptom.Diseases.forEach((disease) => {
                     if (!diseaseCount[disease.id]) {
                         diseaseCount[disease.id] = { count: 0, disease };
                     }
@@ -247,7 +257,7 @@ class Controller {
             const { checkupId } = req.params;
 
             const checkup = await Checkup.findByPk(checkupId, {
-                include: [Symptom]
+                include: [Symptom],
             });
             let disease = null;
 
@@ -261,17 +271,15 @@ class Controller {
                     }
                 }
 
-                // Cari disease dengan gejala terbanyak
                 const mostLikelyDiseaseId = Object.entries(diseaseCounts).sort((a, b) => b[1] - a[1])[0]?.[0];
 
                 if (mostLikelyDiseaseId) {
                     disease = await Disease.findByPk(mostLikelyDiseaseId, {
-                        include: [Poli, Medicine]
+                        include: [Poli, Medicine],
                     });
                 }
             }
             res.render('diagnoseResult', { checkup, disease, formatRupiah });
-
         } catch (error) {
             res.send(error);
         }
@@ -280,7 +288,7 @@ class Controller {
     static async checkupHistory(req, res) {
         try {
             const { userId } = req.session;
-            const { msg } = req.query
+            const { msg } = req.query;
             const checkups = await Checkup.getUserCheckupHistory(userId);
             res.render('checkupHistory', { checkups, msg });
         } catch (error) {
@@ -292,18 +300,16 @@ class Controller {
         try {
             const { id } = req.params;
 
-            // Hapus relasi di tabel pivot
             await CheckupSymptom.destroy({
                 where: {
-                    CheckupId: id
-                }
+                    CheckupId: id,
+                },
             });
 
-            // hapus data Checkup
             await Checkup.destroy({
                 where: {
-                    id
-                }
+                    id,
+                },
             });
 
             res.redirect('/diagnose/history?msg=Riwayat Checkup Berhasil dihapus!');
@@ -315,13 +321,13 @@ class Controller {
 
     static async meet(req, res) {
         try {
-            const { id } = req.params
-            let poli = await Poli.findByPk(id)
-            res.render('meet', { poli })
+            const { id } = req.params;
+            let poli = await Poli.findByPk(id);
+            res.render('meet', { poli });
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     }
-
 }
-module.exports = Controller
+
+module.exports = Controller;
